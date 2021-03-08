@@ -3,6 +3,11 @@ h1{
     color: orange;
 }
 
+h2{
+    font-size: 20px;
+    color: brown;
+}
+
 p{
     font-size: 16px;
     color: blue;
