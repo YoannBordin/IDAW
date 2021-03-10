@@ -15,8 +15,9 @@
         <div class="content">
             <?php
                 require_once('template_menu.php');
+                renderMenuToHTML('index');
             ?>
-            
+
             <div class="text">
                 <p>Bienvenue sur mon site professionnel !</p>
             </div>
