@@ -13,19 +13,10 @@
             <h1>Accueil</h1>
         </div>
         <div class="content">
-            <div class="menu">
-                <div class="navigation">
-                    <h2>Navigation</h2>
-                </div>
-                <nav class="menuelement">
-                    <ul>
-                        <li><a id="current" href="index.php">Accueil</a></li>
-                        <li><a href="cv.php">CV</a></li>
-                        <li><a href="hobbies.php">Hobbies</a></li>
-                    </ul>
-                </nav>
-
-            </div>
+            <?php
+                require_once('template_menu.php');
+            ?>
+            
             <div class="text">
                 <p>Bienvenue sur mon site professionnel !</p>
             </div>
