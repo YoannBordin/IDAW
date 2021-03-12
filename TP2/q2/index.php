@@ -1,31 +1,35 @@
-<!DOCTYPE html>
-<html>
+<?php
+    require_once("template_header.php");
+    
+    $currentPageId ='accueil';
+    
+    if(isset($_GET['page'])) {
+        $currentPageId = $_GET['page'];
+    }
+?>
 
-<head>
+<header class="bandeau_haut">
+    <h1 class="titre">Yoann BORDIN</h1>
+</header>
+
+<?php
+    require_once("template_menu.php");
+    renderMenuToHTML($currentPageId);
+?>
+
+<section class="corps">
     <?php
-        require_once('template_header.php');
+        $pageToInclude = $currentPageId . ".php";
+        
+        if(is_readable($pageToInclude)){
+            require_once($pageToInclude);
+        }
+        else{
+            require_once("error.php");
+        }
     ?>
-</head>
+</section>
 
-<body>
-    <section class="principal-area fill-height">
-        <div class="title">
-            <h1>Accueil</h1>
-        </div>
-        <div class="content">
-            <?php
-                require_once('template_menu.php');
-                renderMenuToHTML('index');
-            ?>
-
-            <div class="text">
-                <p>Bienvenue sur mon site professionnel !</p>
-            </div>
-        </div>
-        <?php
-            require_once('template_footer.php');
-        ?>
-    </section>
-</body>
-
-</html>
+<?php
+    require_once("template_footer.php");
+?>
