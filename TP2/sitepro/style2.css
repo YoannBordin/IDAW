@@ -1,15 +1,13 @@
 body{
     height: 100%;
-    width: 100%;
-    flex-direction: column;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .page {
-    min-height: 100%;
-    min-width: 100%;
-
     display: flex;
+    min-height: 100%;
+
     flex-direction: column;
 }
 
@@ -84,17 +82,18 @@ h1.titre{
 
 .navigation{
     display: flex;
+    flex-direction: column;
     background-color: rgb(0, 110, 180);
     color: white;
     
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 25px;
-    justify-content: center;
+    text-align: center;
 
     flex: 3;
 }
 
-nav.menu{
+.menu{
     display: flex;
     background-color: rgb(0, 110, 180);
     width: 100%;
@@ -112,8 +111,15 @@ nav.menu{
     
     justify-content: center;
     text-align: center;
-    
-    flex: 1;
+}
+
+.corps{
+    display: flex;
+
+    background-color: wheat;
+    flex-direction: column;
+
+    flex: 5;
 }
 
 .titrebox{
@@ -126,8 +132,6 @@ nav.menu{
 .text{
     display: flex;
     flex-direction: column;
-
-    flex: 9;
 }
 
 .footer{
@@ -144,10 +148,9 @@ nav.menu{
 
 .contenu{
     display: flex;
-    background-color: wheat;
 
     flex-direction: column;
-    flex: 5;
+    width: 100%;
 
     padding-left: 30px;
 }

@@ -11,4 +11,4 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <section class = "page">
+    <section class="page">
