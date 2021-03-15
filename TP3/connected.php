@@ -3,7 +3,8 @@
 $users = array(
     // login => password
     'riri'=>'fifi',
-    'yoda'=>'maitrejedi');
+    'yoda'=>'maitrejedi',
+    'test'=>'test');
 
 $login = "anonymous";
 $errorText = "";
@@ -20,7 +21,8 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
     } else {
         $errorText = "Erreur de login/password";
     }
-} else {
+}
+else {
     $errorText = "Merci d'utiliser le formulaire de login";
 }
 
@@ -30,6 +32,9 @@ if(!$successfullyLogged) {
     echo "<h1>Bienvenu ".$login."</h1>";
     echo "<p>Login : $login</p>";
     echo "<p>Password : $tryPwd</p>";
+
+    session_start();
+    $_SESSION['login'] = $login;
 }
 
 ?>

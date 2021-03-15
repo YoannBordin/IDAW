@@ -22,6 +22,8 @@
     </head>
     <body>
         <?php
+            session_start();
+
             echo "<p>Style sélectionné : ";
 
             if(isset($_GET['css'])){
@@ -36,6 +38,17 @@
             }
 
             echo "</p>";
+
+            if(isset($_SESSION['login'])){
+                echo "<p>Session : ". $_SESSION['login'] ."</p>";
+                echo "<a href='disconnected.php'>Déconnexion</a>";
+            }
+            else{
+                echo "Pas de session ouverte<br>";
+                echo "<a href='login.php'>Page de connexion</a>";
+            }
+            
+            
         ?>
     </body>
 </html>
