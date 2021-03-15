@@ -1,7 +1,7 @@
 <div class="footer">
 
 <?php
-  function setLanguage($lang){
+  function setFooterLanguage($lang){
     echo "<p>";
 
     if($lang == 'fr'){

@@ -1,9 +1,14 @@
-<div class="navigation">
-    <h2>Navigation</h2>
-</div>
-
 <?php
     function renderMenuToHTML($currentPageId, $lang){
+        echo "<div class='navigation'><h2>";
+            if($lang == 'fr'){
+                echo "Navigation";
+            }
+            else{
+                echo "Browse";
+            }
+        echo "</h2></div>";
+
         echo "<nav class = menu>";
 
         $menu = array(
@@ -11,7 +16,7 @@
                                'en' => 'Homepage'),
             'cv' => array('fr' => 'CV', 
                           'en' => 'CV'),
-            'hobbies' => array('fr' => 'Passions', 
+            'hobbies' => array('fr' => 'Loisirs', 
                                'en' => 'Hobbies'),
             'contact' => array('fr' => 'Contact', 
                                'en' => 'Contact')

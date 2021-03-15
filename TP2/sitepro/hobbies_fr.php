@@ -1,7 +1,7 @@
 <section class="contenu">
   <div class="titrebox">
       <h1 class="titre">
-          Passions
+          Loisirs
       </h1>
   </div>
 
@@ -16,7 +16,7 @@
       <li>Alpinisme</li>
     </ul>
 
-    <h2>Loisirs</h2>
+    <h2>Activités</h2>
     <ul>
       <li>Jeux vidéos</li>
       <li>Dessin</li>

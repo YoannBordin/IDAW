@@ -16,7 +16,7 @@
       <li>Mountaineering</li>
     </ul>
 
-    <h2>Hobbies</h2>
+    <h2>Activities</h2>
     <ul>
       <li>Video games</li>
       <li>Drawing</li>

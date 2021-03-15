@@ -14,8 +14,23 @@
     }
 ?>
 
-<header class="bandeau_haut">
-    <h1 class="titre">Yoann BORDIN</h1>
+<header class='bandeau_haut'>
+<?php
+    echo "<div class='langbox'>";
+        echo "<a ";
+        echo "class='lang_button' ";
+        echo "href=\"index.php?page=$currentPageId&lang=fr\">";
+        echo "FR</a>";
+
+        echo "<a ";
+        echo "class='lang_button' ";
+        echo "href=\"index.php?page=$currentPageId&lang=en\">";
+        echo "EN</a>";
+    echo "</div>";
+?>
+    <div class="titrebox">
+        <h1 class="titre">Yoann BORDIN</h1>
+    </div>
 </header>
 
 <?php
@@ -38,5 +53,5 @@
 
 <?php
     require_once("template_footer.php");
-    setLanguage($currentLang);
+    setFooterLanguage($currentLang);
 ?>

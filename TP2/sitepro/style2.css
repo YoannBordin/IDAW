@@ -33,6 +33,16 @@ a.menu:hover {
     background-color: rgb(87, 135, 180);
 }
 
+a.lang_button{
+    padding-left: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+a.lang_button:hover{
+    color: lightblue;
+}
+
 hr.menu{
     border-top: 2px solid white;
     width: 200px;
@@ -52,16 +62,24 @@ h1.titre{
 
 .bandeau_haut{
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
     background-color: rgb(0, 50, 130);
     border-bottom: solid 2px darkblue ;
 
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;
-    
-    justify-content: end;
+
+    padding-left: 10px;
     padding-right: 20px;
 
     flex: 2;
+}
+
+.langbox{
+    display: flex;
+    margin-top: 10px;
 }
 
 .navigation{
@@ -103,7 +121,6 @@ nav.menu{
 
     flex-direction: column;
 
-    flex: 1;
 }
 
 .text{
@@ -134,3 +151,4 @@ nav.menu{
 
     padding-left: 30px;
 }
+
