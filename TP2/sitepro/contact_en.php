@@ -1,12 +1,12 @@
-<section class="principal-area fill-height">
-    <div class="title">
-        <h1>Contact</h1>
+<section class="contenu">
+    <div class="titrebox">
+        <h1 class="titre">Contact</h1>
     </div>
 
-    <div class="content">
+    <hr class = "contenu">
+
         <div class="text">
             <p>Email : yoann.bordin@etu.imt-lille-douai.fr</p>
             <p>Phone : +33 7 86 40 14 80</p>
         </div>
-    </div>
 </section>

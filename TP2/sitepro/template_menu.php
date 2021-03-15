@@ -1,12 +1,10 @@
-<div class="menu">
-    <div class="navigation">
-        <h2>Navigation</h2>
-    </div>
-    <nav class="menuelement">
+<div class="navigation">
+    <h2>Navigation</h2>
+</div>
 
 <?php
     function renderMenuToHTML($currentPageId, $lang){
-        echo "<ul>";
+        echo "<nav class = menu>";
 
         $menu = array(
             'accueil' => array('fr' => 'Accueil', 
@@ -20,22 +18,27 @@
         );
 
         foreach($menu as $pageId => $pageParams){
-            echo "<li><a ";
+            echo "<hr class='menu'>";
+            echo "<nav class = menuelement>";
+            echo "<a ";
 
             if($pageId == $currentPageId){
                 echo "id=\"current\" ";
             }
             
-            echo "href=\"index.php"
-            echo "?page=$pageId"
-            echo "&lang=$lang\">";
-            echo "$pageParams[$lang]"
+            echo "href=\"index.php";
+            echo "?page=$pageId";
+            echo "&lang=$lang\" ";
+            echo "class=menu>";
+            echo "$pageParams[$lang]";
             
-            echo"</a></li>";        
+            echo"</a></nav>";
+            
+            if($pageId == 'contact'){
+                echo "<hr class='menu'>";
+            }
         }
 
-        echo "</ul></nav>";
+        echo "</nav>";
     }
 ?>
-
-</div>
