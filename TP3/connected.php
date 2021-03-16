@@ -1,11 +1,28 @@
 <?php
-// on simule une base de données
-$users = array(
-    // login => password
-    'riri'=>'fifi',
-    'yoda'=>'maitrejedi',
-    'test'=>'test');
 
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$db_name = 'tp3';
+
+try{
+    $dbco = new PDO("mysql:host=$servername;dbname=$db_name", $username, $password);
+    $dbco -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    /*Sélectionne toutes les valeurs dans la table users*/
+    $sth = $dbco->prepare("SELECT * FROM infos_user");
+    $sth->execute();
+
+    /*Retourne un tableau associatif pour chaque entrée de notre table
+        *avec le nom des colonnes sélectionnées en clefs*/
+    $users = $sth->fetchAll(PDO::FETCH_ASSOC);
+}
+
+catch(PDOException $e){
+    echo "Erreur : " . $e->getMessage();
+}
+
+$pseudo = "Anonymous";
 $login = "anonymous";
 $errorText = "";
 $successfullyLogged = false;
@@ -15,10 +32,16 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
     $tryPwd=$_POST['password'];
 
 // si login existe et password correspond
-    if( array_key_exists($tryLogin,$users) && $users[$tryLogin]==$tryPwd ) {
-        $successfullyLogged = true;
-        $login = $tryLogin;
-    } else {
+    foreach($users as $entry){
+        if($entry['login'] == $tryLogin 
+        && $entry['password'] == $tryPwd){
+            
+            $successfullyLogged = true;
+            $login = $tryLogin;
+            $pseudo = $entry['pseudo'];
+        }
+    }
+    if(!$successfullyLogged){
         $errorText = "Erreur de login/password";
     }
 }
@@ -29,9 +52,8 @@ else {
 if(!$successfullyLogged) {
     echo $errorText;
 } else {
-    echo "<h1>Bienvenu ".$login."</h1>";
+    echo "<h1>Bienvenu ".$pseudo."</h1>";
     echo "<p>Login : $login</p>";
-    echo "<p>Password : $tryPwd</p>";
 
     session_start();
     $_SESSION['login'] = $login;
