@@ -1,24 +1,23 @@
+<?php
+    $style = "style1";
+
+    if(isset($_GET['css'])){
+        $style = $_GET['css'];
+    }
+    else if(isset($_COOKIE['css'])){
+        $style = $_COOKIE['css'];
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Cookie</title>
+        <meta charset="utf-8">
 
         <?php
-            $style = "style1";
-
-            if(isset($_GET['css'])){
-                $style = $_GET['css'];
-            }
-            else if(isset($_COOKIE['css'])){
-                $style = $_COOKIE['css'];
-            }
-
-            echo "<link ";
-            echo "rel='stylesheet' ";
-            echo "href='$style.css'>";
+            echo "<link rel='stylesheet' href='$style.css'>";
         ?>
-
-        <meta charset="utf-8">
     </head>
     <body>
         <?php
