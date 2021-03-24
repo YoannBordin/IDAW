@@ -1,50 +1,57 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="fr">
     <head>
-        <title>Tableau</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style2.css">
-
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="jscrud.js" async></script>
+        
+        <title>tabletest</title>
+        <link rel="stylesheet" href="jscrud_style.css">
     </head>
     <body>
-        <table id="table">
+        <table class="table">
             <thead>
-                <tr class="head">
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Date de naissance</th>
-                    <th>Aime le cours</th>
-                    <th>Options</th>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Date de naissance</th>
+                    <th scope="col">Aime le cours Web</th>
+                    <th scope="col">Remarques</th>
+                    <th scope="col">CRUD</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Test</td>
-                    <td>Test2</td>
-                    <td>Test3</td>
-                </tr>
+            <tbody id="studentsTableBody">
+
             </tbody>
         </table>
-
-        <form onsubmit="onFormSubmit();" autocomplete="off">
-            <div class="form">
-                <label for="name">Nom :</label>
-                <input type="text" name="name" id="name" required>
+        
+        <form id="addStudentForm" action="" onsubmit="onFormSubmit();">
+            <div class="form-group row">
+                <label for="inputName">Nom *</label>
+                <input type="text" class="form-control" id="inputName" required>
             </div>
-            <div class="form">
-                <label for="surname">Prénom :</label>
-                <input type="text" name="surname" id="surname" required>
+            <div class="form-group row">
+                <label for="inputSurname">Prénom</label>
+                <input type="text" class="form-control" id="inputSurname">
             </div>
-            <div class="form">
-                <label for="birth">Date de naissance :</label>
-                <input type="date" name="birth" id="birth" required>
+            <div class="form-group row">
+                <label for="inputBirth">Date de naissance</label>
+                <input type="date" class="form-control" id="inputBirth">
             </div>
-            <div class="form">
-                <label for="like">Aime le cours ?</label>
-                <input type="checkbox" name="like" id="like">
+            <div class="form-group row">
+                <label for="inputLike">Aime le cours ?</label>
+                <select type="text" class="form-control" id="inputLike" >
+                    <option value = "Oui">Oui</option>
+                    <option value = "Non">Non</option>
+                </select>
             </div>
-            <div class="form">
+            <div class="form-group row">
+                <label for="inputReq">Remarques</label>
+                <input type="text" class="form-control" id="inputReq">
+            </div>
+            <div class="form-group row">
                 <input type="submit" value="Envoyer">
             </div>
         </form>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tableau</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style2.css">
+
+        <script src="jscrud.js" async></script>
+    </head>
+    <body>
+        <table id="table">
+            <thead>
+                <tr class="head">
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Aime le cours</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Test</td>
+                    <td>Test2</td>
+                    <td>Test3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form onsubmit="onFormSubmit();" autocomplete="off">
+            <div class="form">
+                <label for="name">Nom :</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form">
+                <label for="surname">Prénom :</label>
+                <input type="text" name="surname" id="surname" required>
+            </div>
+            <div class="form">
+                <label for="birth">Date de naissance :</label>
+                <input type="date" name="birth" id="birth" required>
+            </div>
+            <div class="form">
+                <label for="like">Aime le cours ?</label>
+                <input type="checkbox" name="like" id="like">
+            </div>
+            <div class="form">
+                <input type="submit" value="Envoyer">
+            </div>
+        </form>
+    </body>
+</html>
