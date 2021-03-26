@@ -16,7 +16,7 @@ function onFormSubmit() {
             <td onclick="editText(this);">${surname}</td>
             <td onclick="editDate(this);">${birth}</td>
             <td onclick="editMenu(this);">${like}</td>
-            <td>${req}</td>
+            <td onclick="editText(this);">${req}</td>
             <td>${crud}</td>
         </tr>`);
 }
@@ -25,11 +25,6 @@ function deleteRow(buttonDel){
     $(buttonDel).closest('tr').remove();
 }
 
-//<table><tbody><tr><td onclick="edit(this);">Test</td></tr></tbody></table>
-        //<script>
-
-        //</script>
-
 function editText(cell){
     let text = $(cell).text();
     let input = `<input type="text" class="form-control" value=${text} id="input">`;
@@ -37,12 +32,7 @@ function editText(cell){
     $(cell).replaceWith(input);
 
     $('#input').on('keyup', function(event){
-        if(event.key === 'Enter'){
-            let entry = $('#input').val();
-
-            $(cell).text(entry);
-            $('#input').replaceWith(cell);
-        }
+        setEnterEvent(event, cell);
     });
 }
 
@@ -53,19 +43,14 @@ function editDate(cell){
     $(cell).replaceWith(input);
 
     $('#input').on('keyup', function(event){
-        if(event.key === 'Enter'){
-            let entry = $('#input').val();
-
-            $(cell).text(entry);
-            $('#input').replaceWith(cell);
-        }
+        setEnterEvent(event, cell);
     });
 }
 
 function editMenu(cell){
     let text = $(cell).text();
     let input = 
-        `<select type="text" class="form-control" id="input" >
+        `<select type="text" class="form-control" value=${text} id="input" >
             <option value = "Oui">Oui</option>
             <option value = "Non">Non</option>
         </select>`;
@@ -73,11 +58,15 @@ function editMenu(cell){
     $(cell).replaceWith(input);
 
     $('#input').on('keyup', function(event){
-        if(event.key === 'Enter'){
-            let entry = $('#input').val();
-
-            $(cell).text(entry);
-            $('#input').replaceWith(cell);
-        }
+        setEnterEvent(event, cell);
     });
+}
+
+function setEnterEvent(event, cell) {
+    if (event.key === 'Enter') {
+        let entry = $('#input').val();
+
+        $(cell).text(entry);
+        $('#input').replaceWith(cell);
+    }
 }
