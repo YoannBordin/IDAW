@@ -1,8 +1,3 @@
-let editMode = false;
-
-let students = [];
-let studentMaxId = 1;
-
 function onFormSubmit() {
     // prevent the form to be sent to the serverevent.
     event.preventDefault();
@@ -13,44 +8,21 @@ function onFormSubmit() {
     let like = $("#inputLike").val();
     let req = $("#inputReq").val();
 
-    let crud = 
-        `<input type='button' value='Editer' onclick='editRow(this)'>
-        <input type='button' value='Supprimer' onclick='deleteRow(this)'>`;
+    let crud = `<input type='button' value='Supprimer' onclick='deleteRow(this)'>`;
 
-    let student = {
-        'id' : studentMaxId,
-        'name' : name,
-        'surname' : surname,
-        'birth' : birth,
-        'like' : like,
-        'request' : req
-    }
-    students.push(student);
-    console.log(students);
-
-    if(editMode){
-
-    }
-    else{
-        $("#studentsTableBody").append(
-            `<tr id="student-${studentMaxId}">
-                <td>${name}</td>
-                <td>${surname}</td>
-                <td>${birth}</td>
-                <td>${like}</td>
-                <td>${req}</td>
-                <td>${crud}</td>
-            </tr>`);
-
-        studentMaxId++;
-    }
+    $("#studentsTableBody").append(
+        `<tr>
+            <td onclick="editText(this);">${name}</td>
+            <td onclick="editText(this);">${surname}</td>
+            <td onclick="editDate(this);">${birth}</td>
+            <td onclick="editMenu(this);">${like}</td>
+            <td onclick="editText(this);">${req}</td>
+            <td>${crud}</td>
+        </tr>`);
 }
 
 function deleteRow(buttonDel){
-    let tr = $(buttonDel).closest('tr');
-    let id = tr.attr('id');
-
-    tr.remove();
+    $(buttonDel).closest('tr').remove();
 }
 
 function editText(cell){
@@ -98,3 +70,4 @@ function setEnterEvent(event, cell) {
         $('#input').replaceWith(cell);
     }
 }
+

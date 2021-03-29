@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="test_ajax.js" async></script>
+        
+        <title>tabletest</title>
+        <link rel="stylesheet" href="jscrud_style.css">
+    </head>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Date de naissance</th>
+                    <th scope="col">Aime le cours Web</th>
+                    <th scope="col">Remarques</th>
+                    <th scope="col">CRUD</th>
+                </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+
+            </tbody>
+        </table>
+        
+        <form id="addStudentForm" method="POST" action="">
+            <div class="form-group row">
+                <label for="inputName">Nom *</label>
+                <input type="text" class="form-control" name='name' id="inputName" required>
+            </div>
+            <div class="form-group row">
+                <label for="inputSurname">Prénom</label>
+                <input type="text" class="form-control" name='surname' id="inputSurname">
+            </div>
+            <div class="form-group row">
+                <label for="inputBirth">Date de naissance</label>
+                <input type="date" class="form-control" name='birth' id="inputBirth">
+            </div>
+            <div class="form-group row">
+                <label for="inputLike">Aime le cours ?</label>
+                <select type="text" class="form-control" name='like' id="inputLike" >
+                    <option value = "Oui">Oui</option>
+                    <option value = "Non">Non</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label for="inputReq">Remarques</label>
+                <input type="text" class="form-control" name='req' id="inputReq">
+            </div>
+            <div class="form-group row">
+                <input type="submit" value="Envoyer">
+            </div>
+        </form>
+
+        <button id="serial">Serialize</button>
+    </body>
+</html>
