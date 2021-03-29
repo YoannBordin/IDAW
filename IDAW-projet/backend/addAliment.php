@@ -1,5 +1,6 @@
 <?php
 
+print_r($_POST);
 addAlimentToDB();
 
 function addAlimentToDB(){
@@ -15,19 +16,20 @@ function addAlimentToDB(){
     if (!$connect) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "Connected successfully";
+    echo "Connected successfully\n";
 
     $query = 
-        "INSERT INTO aliment(id, name, type, calories, water, sugar, salt
-        VALUES ".
+        "INSERT INTO aliment(id, name, type, calories, water, sugar, salt) 
+        VALUES (".
             $_POST['id'].",".
-            $_POST['name'].",".
-            $_POST['type'].",".
-            $_POST['calories'].",".
-            $_POST['water'].",".
-            $_POST['sugar'].",".
-            $_POST['salt'];
-
+            "'".$_POST['name']."',".
+            "'".$_POST['type']."',".
+            "'".$_POST['calories']."',".
+            "'".$_POST['water']."',".
+            "'".$_POST['sugar']."',".
+            "'".$_POST['salt']."')";
+            
+    echo $query;
     mysqli_query($connect, $query);
 
     mysqli_close($connect); 

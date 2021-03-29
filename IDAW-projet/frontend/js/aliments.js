@@ -4,8 +4,48 @@ let currentId = 1;
 
 let editMode = false;
 
+$(document).ready(function(){
+    $('#alimentForm').submit(function(event){
+        event.preventDefault();
+        
+        let form = $(this);
+        let serial = form.serialize();
+        serial += `&id=${currentId}`;
+
+        addAliment();
+
+        console.log(currentId, editMode);
+        
+        if(editMode){
+            $.ajax({
+                type: "POST",
+                url: "../backend/editAliment.php",
+                data: serial,
+                success: function(data)
+                {
+                    console.log(data); // show response from the php script.
+                }
+            });
+                
+            editMode = false;
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: "../backend/addAliment.php",
+                data: serial,
+                success: function(data)
+                {
+                    console.log(data); // show response from the php script.
+                }
+            });
+
+            maxId++;
+        }
+    });
+});
+
 function addAliment(){
-    event.preventDefault();
 
     let aliment = {
         id : currentId,
@@ -36,7 +76,6 @@ function addAliment(){
             </tr>`
         );
 
-        editMode = false;
     }
     else{
         aliments.push(aliment);
@@ -52,8 +91,6 @@ function addAliment(){
                 <td>${crud}</td>
             </tr>`
         );
-
-        maxId++;
     }
 
     $('#alimentForm')[0].reset();
@@ -62,6 +99,17 @@ function addAliment(){
 
 function deleteRow(id){
     $(`#row${id}`).remove();
+
+    let id_serial = `id=${id}`;
+    $.ajax({
+        type: "POST",
+        url: "../backend/deleteAliment.php",
+        data: id_serial,
+        success: function(data)
+        {
+            console.log(data); // show response from the php script.
+        }
+ });
     
 }
 
