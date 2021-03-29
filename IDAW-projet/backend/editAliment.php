@@ -1,9 +1,9 @@
 <?php
 
 print_r($_POST);
-addAlimentToDB();
+editAlimentFromDB();
 
-function addAlimentToDB(){
+function editAlimentFromDB(){
     $servername = "localhost";
     $dbname = "projet";
     $username = "root";
