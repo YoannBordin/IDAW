@@ -1,0 +1,27 @@
+body{
+}
+
+.table {
+    margin-bottom: 100px;
+}
+
+thead{
+    background-color: lightblue;
+}
+
+th{
+    width: 10%;
+}
+
+.form-group {
+    display: table-row;
+}
+
+label, input {
+    display: table-cell;
+    margin-bottom: 10px;
+}
+
+label {
+    padding-right: 10px;
+}
