@@ -4,10 +4,7 @@ print_r($_POST);
 deleteAlimentFromDB();
 
 function deleteAlimentFromDB(){
-    $servername = "localhost";
-    $dbname = "projet";
-    $username = "root";
-    $password = "";
+    require_once('config.php');
 
     // Create connection
     $connect = mysqli_connect($servername, $username, $password, $dbname);
@@ -16,7 +13,6 @@ function deleteAlimentFromDB(){
     if (!$connect) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "Connected successfully\n";
 
     $query = 
         "DELETE FROM aliment

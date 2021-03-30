@@ -4,10 +4,7 @@ print_r($_POST);
 addAlimentToDB();
 
 function addAlimentToDB(){
-    $servername = "localhost";
-    $dbname = "projet";
-    $username = "root";
-    $password = "";
+    require_once('config.php');
 
     // Create connection
     $connect = mysqli_connect($servername, $username, $password, $dbname);
@@ -16,7 +13,6 @@ function addAlimentToDB(){
     if (!$connect) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "Connected successfully\n";
 
     $query = 
         "INSERT INTO aliment(id, name, type, calories, water, sugar, salt) 
