@@ -5,12 +5,10 @@ let currentId = 1;
 let editMode = false;
 
 $(document).ready(function(){
-
     getAlimentsFromDB();
 
     $('#alimentForm').submit(function(event){
         event.preventDefault();
-        
         
         let form = $(this);
         let serial = form.serialize();
@@ -146,6 +144,27 @@ function getAlimentsFromDB(){
                 jsonData[i][0] = parseInt(jsonData[i][0]);
                 let aliment = createAliment(jsonData[i]);
                 aliments.push(aliment);
+            }
+
+            createDataTable();
+        }
+    });
+}
+
+function createDataTable() {
+    $('#alimentTable').DataTable({
+        "language": {
+            "lengthMenu": "Afficher _MENU_ aliments par page",
+            "zeroRecords": "Aucun aliment trouvé",
+            "info": "Page _PAGE_ sur _PAGES_",
+            "infoEmpty": "Aucun aliment disponible",
+            "infoFiltered": "(filtré à partir de _MAX_ entrées)",
+            "search": "Rechercher :",
+            "paginate": {
+                "first": "Début",
+                "last": "Fin",
+                "next": "Suivant",
+                "previous": "Précédent"
             }
         }
     });

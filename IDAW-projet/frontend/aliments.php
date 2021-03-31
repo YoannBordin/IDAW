@@ -1,17 +1,17 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset='utf-8'>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php
+    require_once('header.php');
+    setTitle('Aliments');
+?>
         
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="js/aliments.js" async></script>
-        
-        <title>Aliments</title>
-        <link rel="stylesheet" href="css/style.css">
+
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
     </head>
     <body>
-        <table class="table">
+        <table class="table" id="alimentTable">
             <thead>
                 <tr>
                     <th scope="col">Nom</th>
@@ -23,8 +23,8 @@
                     <th scope="col">Opérations</th>
                 </tr>
             </thead>
-            <tbody id='alimentTableBody'>
-                
+            <tbody id='alimentTableBody' >
+
             </tbody>
         </table>
 
@@ -40,7 +40,7 @@
                 <input type="text" class="form-control" name="type" id="inputType">
             </div>
             <div class="form-group row">
-                <label for="calories">Calories</label>
+                <label for="calories">Calories (kcal/100g)</label>
                 <input type="text" class="form-control" name="calories" id="inputCal">
             </div>
             <div class="form-group row">
