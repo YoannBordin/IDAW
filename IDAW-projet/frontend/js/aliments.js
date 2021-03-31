@@ -13,7 +13,7 @@ $(document).ready(function(){
         let form = $(this);
         let serial = form.serialize();
 
-        addAliment();
+        addAlimentToTable();
         
         if(editMode){
             serial += `&id=${currentId}`;
@@ -40,7 +40,7 @@ $(document).ready(function(){
     });
 });
 
-function addAliment(){
+function addAlimentToTable(){
     let aliment = createAliment([
         currentId,
         $('#inputName').val(),

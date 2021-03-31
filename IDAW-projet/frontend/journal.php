@@ -15,6 +15,7 @@
                 <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Heure</th>
+                    <th scope="col">Opérations</th>
                 </tr>
             </thead>
             <tbody id='journalTableBody' >
@@ -33,7 +34,7 @@
                 <label for="time">Heure</label>
                 <input type="time" class="form-control" name="type" id="inputTime">
             </div>
-
+    
             <button id="addButton">Ajouter un aliment</button>
 
             <div class="form-group row">
