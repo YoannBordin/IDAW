@@ -3,14 +3,18 @@ body{
 
 .table {
     margin-bottom: 100px;
+    width: 80%;
 }
 
 thead{
     background-color: lightblue;
 }
 
-th{
-    width: 10%;
+th.date, th.heure, th.quantity, th.operation{
+    width: 15%;
+}
+th.aliment{
+    width: 40%;
 }
 
 .form-group {

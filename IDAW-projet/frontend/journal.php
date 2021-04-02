@@ -13,9 +13,11 @@
         <table class="table" id="journalTable">
             <thead>
                 <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Heure</th>
-                    <th scope="col">Opérations</th>
+                    <th scope="col" class="date">Date</th>
+                    <th scope="col" class="time">Heure</th>
+                    <th scope="col" class="aliment">Aliment</th>
+                    <th scope="col" class="quantity">Quantité (g ou mL)</th>
+                    <th scope="col" class="operation">Opérations</th>
                 </tr>
             </thead>
             <tbody id='journalTableBody' >
@@ -28,11 +30,11 @@
         <form id="repasForm">
             <div class="form-group row">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" name="name" id="inputDate">
+                <input type="date" class="form-control" name="date" id="inputDate">
             </div>
             <div class="form-group row">
                 <label for="time">Heure</label>
-                <input type="time" class="form-control" name="type" id="inputTime">
+                <input type="time" class="form-control" name="time" id="inputTime">
             </div>
     
             <button id="addButton">Ajouter un aliment</button>
