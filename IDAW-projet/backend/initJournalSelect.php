@@ -13,7 +13,7 @@ function initAliments(){
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $query = "SELECT name FROM aliment";   
+    $query = "SELECT nom FROM aliment";   
     $result = mysqli_query($connect, $query);
 
     $array = array();

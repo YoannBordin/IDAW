@@ -28,7 +28,7 @@ function addRepasToDB(){
             "INSERT INTO composer(id_repas, id_aliment, quantite)
             VALUES (".
                 $_POST['id'].",".
-                "(SELECT id FROM aliment WHERE name='".$_POST['aliments'][$i][0]."'),".
+                "(SELECT id FROM aliment WHERE nom='".$_POST['aliments'][$i][0]."'),".
                 "'".$_POST['aliments'][$i][1]."')";
 
         echo $queryComposer;

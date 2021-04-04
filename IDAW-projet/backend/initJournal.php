@@ -14,7 +14,7 @@ function initJournal(){
     }
 
     $query = 
-        "SELECT repas.id_repas, repas.date, repas.heure, aliment.name, composer.quantite FROM repas
+        "SELECT repas.id_repas, repas.date, repas.heure, aliment.nom, composer.quantite FROM repas
         JOIN composer ON repas.id_repas = composer.id_repas
         JOIN aliment ON composer.id_aliment = aliment.id";
     $result = mysqli_query($connect, $query);
