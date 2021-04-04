@@ -7,7 +7,7 @@ let currentId = 1;
 let selectId = 1;
 
 $(document).ready(function () {
-    getAlimentsFromDB();
+    loadForm();
     getRepasListFromDB();
 
     $('#addButton').on('click', function(event){
@@ -322,16 +322,22 @@ function addRepasToList(){
 }
 
 function addAlimentToForm(){
-    let div = `<div class='form-group row' id='divAlim${selectId}'>`;
+    let div = `<div class='mb-3 ms-1 row' id='divAlim${selectId}'>`;
 
-        div += `<label for="aliment${selectId}">Aliment ${selectId}</label>
-                <select id="selectAliment${selectId}" name="aliment${selectId}">
-                    <option>Choisir un Aliment</option>`;
-
-        div += `</select>
-
-        <input type="text" class="form-control" name="quantity${selectId}" id="inputQuantity${selectId}">
-        <label for="quantity${selectId}">(g ou mL)</label>`;
+        div += `<div class="col col-sm-2">
+                    <label for="aliment${selectId}">Aliment ${selectId}</label>
+                </div>
+                <div class="col col-sm-3">
+                    <select id="selectAliment${selectId}" name="aliment${selectId}" class="form-select">
+                        <option>Choisir un Aliment</option>`;
+        div += `    </select>
+                </div>
+                <div class="col col-sm-1">
+                    <input type="text" class="form-control" name="quantity${selectId}" id="inputQuantity${selectId}">
+                </div>
+                <div class="col col-sm-1">
+                    <label for="quantity${selectId}">(g ou mL)</label>
+                </div>`;
     div += "</div>";
 
     $('#repasForm').append(div);
@@ -342,7 +348,7 @@ function addAlimentToForm(){
     }
 }
 
-function getAlimentsFromDB(){
+function loadForm(){
     $.ajax({
         type: "POST",
         url: "../backend/initJournalSelect.php",

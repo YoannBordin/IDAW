@@ -15,7 +15,7 @@ function addAlimentToDB(){
     }
 
     $query = 
-        "INSERT INTO aliment(id, name, type, calories, water, sugar, salt) 
+        "INSERT INTO aliment(id, nom, categorie, calories, eau, sucre, sel) 
         VALUES (".
             $_POST['id'].",".
             "'".$_POST['name']."',".

@@ -16,12 +16,12 @@ function editAlimentFromDB(){
 
     $query = 
         "UPDATE aliment 
-        SET name=       '". $_POST['name']      ."', 
-            type=       '". $_POST['type']      ."',
+        SET nom=       '". $_POST['name']      ."', 
+            categorie=       '". $_POST['type']      ."',
             calories=   '". $_POST['calories']  ."',
-            water=      '". $_POST['water']     ."',
-            sugar=      '". $_POST['sugar']     ."',
-            salt=       '". $_POST['salt']      ."'
+            eau=      '". $_POST['water']     ."',
+            sucre=      '". $_POST['sugar']     ."',
+            sel=       '". $_POST['salt']      ."'
         WHERE id=".$_POST['id'];
             
     echo $query;

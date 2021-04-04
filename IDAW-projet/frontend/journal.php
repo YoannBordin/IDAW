@@ -1,6 +1,7 @@
 <?php
     require_once('header.php');
     setTitle('Journal');
+    setPage("journal.php");
 ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -10,14 +11,16 @@
     </head>
 
     <body>
-        <table class="table" id="journalTable">
+        <h1 class="ms-3">Historique</h1>
+
+        <table class="table table-striped" id="journalTable">
             <thead>
                 <tr>
-                    <th scope="col" class="date">Date</th>
-                    <th scope="col" class="time">Heure</th>
-                    <th scope="col" class="aliment">Aliment</th>
-                    <th scope="col" class="quantity">Quantité (g ou mL)</th>
-                    <th scope="col" class="operation">Opérations</th>
+                    <th scope="col" class="table-primary date">Date</th>
+                    <th scope="col" class="table-primary time">Heure</th>
+                    <th scope="col" class="table-primary aliment">Aliment</th>
+                    <th scope="col" class="table-primary quantity">Quantité (g ou mL)</th>
+                    <th scope="col" class="table-primary operation">Opérations</th>
                 </tr>
             </thead>
             <tbody id='journalTableBody' >
@@ -25,24 +28,32 @@
             </tbody>
         </table>
 
-        <h1>Ajouter un repas</h1>
+        <h1 class="ms-3">Ajouter un repas</h1>
         
         <form id="repasForm">
-            <div class="form-group row">
-                <label for="date">Date</label>
-                <input type="date" class="form-control" name="date" id="inputDate">
+            <div class="mb-3 ms-1 row">
+                <label for="date" class="col-sm-2 col-form-label">Date</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" name="date" id="inputDate">
+                </div>
             </div>
-            <div class="form-group row">
-                <label for="time">Heure</label>
-                <input type="time" class="form-control" name="time" id="inputTime">
+            <div class="mb-3 ms-1 row">
+                <label for="time" class="col-sm-2 col-form-label">Heure</label>
+                <div class="col-sm-3">
+                    <input type="time" class="form-control" name="time" id="inputTime">
+                </div>
             </div>
-    
-            <button id="addButton">Ajouter un aliment</button>
+            <div class="mb-3 ms-1 row" id="addButton">
+                <div class="col-sm-3">
+                    <button class="btn btn-light">Ajouter un aliment</button>
+                </div>
+            </div>
 
-            <div class="form-group row">
+            <div class="row w-75 mx-auto">
                 <input type="submit" value="Envoyer">
             </div>
         </form>
-    </body>
 
-</html>
+<?php
+    require_once("footer.php");
+?>

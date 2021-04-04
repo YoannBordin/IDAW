@@ -34,10 +34,10 @@ function loadProfileData(){
 }
 
 function addDataToDisplay(){
-    $('#labelLogin').append(`<p>${user.login}</p>`);
-    $('#labelName').append(`<p>${user.name}</p>`);
-    $('#labelSurname').append(`<p>${user.surname}</p>`);
-    $('#labelGender').append(`<p>${user.gender}</p>`);
-    $('#labelSport').append(`<p>${user.sport}</p>`);
-    $('#labelAge').append(`<p>${user.age}</p>`);
+    $('#entryLogin').append(`<p>${user.login}</p>`);
+    $('#entryName').append(`<p>${user.name}</p>`);
+    $('#entrySurname').append(`<p>${user.surname}</p>`);
+    $('#entryGender').append(`<p>${user.gender}</p>`);
+    $('#entrySport').append(`<p>${user.sport}</p>`);
+    $('#entryAge').append(`<p>${user.age}</p>`);
 }

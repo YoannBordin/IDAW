@@ -32,7 +32,10 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 url: "../backend/addAliment.php",
-                data: serial
+                data: serial,
+                success: function(data){
+                    console.log(data);
+                }
             });
 
             setNextId(maxId++);
