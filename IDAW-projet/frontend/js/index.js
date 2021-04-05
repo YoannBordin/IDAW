@@ -8,11 +8,17 @@ let apportToday = {
     salt : 0
 }
 
+let vnr = {
+    calories : 2000,
+    water : 2500,
+    sugar : 90,
+    salt : 6
+}
+
 $(document).ready(function(){
     console.log(today);
 
     loadData();
-    drawTodayGraph();
 });
 
 function loadData() {
@@ -38,6 +44,8 @@ function loadData() {
 
             setApportToday();
             console.log(apportToday);
+            
+            drawTodayGraph();
         }
     });
 }
@@ -54,39 +62,64 @@ function setApportToday(){
 }
 
 function drawTodayGraph(){
-        // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 40, bottom: 30, left: 30},
-    width = 450 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
 
-    // append the svg object to the body of the page
-    var sVg = d3.select("#Area")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    // translate this svg element to leave some margin.
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    let i = 1;
+    Object.keys(apportToday).forEach(key => {
+        if(key != "date"){
+            console.log(key);
+            let rapport = Math.round(apportToday[key] / vnr[key] * 100);
+            console.log(rapport);
 
-    // X scale and Axis
-    var x = d3.scaleLinear()
-    .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
-    .range([0, width]);       // This is the corresponding value I want in Pixel
-    sVg
-    .append('g')
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+            $(`#entryAccueil${i}`).append(
+                `<svg height="30"><g>
+                        <rect width="${rapport/2}%" height="25" fill="lightblue"></rect>
+                        <text x="${rapport}" y="12" dy="6">${rapport} %</text>
+                </g></svg>`
+            );
 
-    // Y scale and Axis
-    y = d3.scaleBand()
-    .domain(d3.range(dailyData.length))
-    .rangeRound([margin.top, height - margin.bottom])
-    .padding(0.1);
-
-    sVg
-    .append('g')
-    .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y));
-
+            i++;
+        }
+    });
+    for(let apport in apportToday){
+        if(apport != "date"){
+            
+        }
+        
+    };
     
+
+    /*
+        <svg height="30"><g>
+            <rect width="50" height="25" fill="lightblue"></rect>
+            <text x="55" y="12" dy="5">5 %</text>
+        </g></svg>
+    */
 }
+
+function bars(scale) {
+    const margin = 10,
+      width = 100,
+      height = 60,
+      chart = `<svg width=${width + 2 * margin} height=${height + 2 * margin}>
+  <g transform="translate(${margin}, ${margin})">
+  
+  <rect width=${width} height="${height}"
+   fill="none" stroke="black" stroke-width="0.5" />
+  
+  <rect x="${scale("one")}" width=${scale.bandwidth()} height="${height}"
+   fill="red"/>
+  
+  <rect x="${scale("two")}" width=${scale.bandwidth()} height="${height}"
+   fill="green"/>
+  
+  <rect x="${scale("three")}" width=${scale.bandwidth()} height="${height}"
+   fill="blue" />
+  
+  <rect x="${scale("four")}" width=${scale.bandwidth()} height="${height}"
+   fill="#777" />
+  
+  </g></svg>`;
+  
+    return chart;
+  }
+
