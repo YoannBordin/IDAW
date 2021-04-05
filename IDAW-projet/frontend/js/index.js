@@ -1,5 +1,6 @@
 let dailyData = [];
 let today = new Date().toISOString().slice(0, 10);
+
 let apportToday = {
     date : today,
     calories : 0,
@@ -62,7 +63,6 @@ function setApportToday(){
 }
 
 function drawTodayGraph(){
-
     let i = 1;
     Object.keys(apportToday).forEach(key => {
         if(key != "date"){
@@ -80,46 +80,5 @@ function drawTodayGraph(){
             i++;
         }
     });
-    for(let apport in apportToday){
-        if(apport != "date"){
-            
-        }
-        
-    };
-    
-
-    /*
-        <svg height="30"><g>
-            <rect width="50" height="25" fill="lightblue"></rect>
-            <text x="55" y="12" dy="5">5 %</text>
-        </g></svg>
-    */
 }
-
-function bars(scale) {
-    const margin = 10,
-      width = 100,
-      height = 60,
-      chart = `<svg width=${width + 2 * margin} height=${height + 2 * margin}>
-  <g transform="translate(${margin}, ${margin})">
-  
-  <rect width=${width} height="${height}"
-   fill="none" stroke="black" stroke-width="0.5" />
-  
-  <rect x="${scale("one")}" width=${scale.bandwidth()} height="${height}"
-   fill="red"/>
-  
-  <rect x="${scale("two")}" width=${scale.bandwidth()} height="${height}"
-   fill="green"/>
-  
-  <rect x="${scale("three")}" width=${scale.bandwidth()} height="${height}"
-   fill="blue" />
-  
-  <rect x="${scale("four")}" width=${scale.bandwidth()} height="${height}"
-   fill="#777" />
-  
-  </g></svg>`;
-  
-    return chart;
-  }
 

@@ -1,7 +1,6 @@
 let alimentsList = [];
 let repasList = [];
 
-let editMode = false;
 let maxId = 1;
 let currentId = 1;
 let selectId = 1;
@@ -20,27 +19,15 @@ $(document).ready(function () {
 
     $('#repasForm').submit(function(event){
         event.preventDefault();
-        
-        if(editMode){
-            editRepasList();
-            editTable();
-            editDB();
-        }
-        else{
-            setNextId(maxId);
+        setNextId(maxId);
 
-            addRepasToList();
-            addRepasToTable();
-            addRepasToDB();
+        addRepasToList();
+        addRepasToTable();
+        addRepasToDB();
 
-            setNextId(maxId ++);
-        }
-
-        clearForm();
-
-        maxId ++;
-        currentId = maxId;
+        setNextId(maxId ++);
         selectId = 1;
+        clearForm();
     });
 });
 
@@ -56,24 +43,6 @@ function addRepasToDB(){
         type: "POST",
         url: "../backend/addRepas.php",
         data: serial
-    });
-}
-
-function editDB(){
-    let i = 0;
-    while(repasList[i].id != currentId){
-        i++;
-    }
-
-    let serial = repasList[i];
-
-    $.ajax({
-        type: "POST",
-        url: "../backend/editRepas.php",
-        data: serial,
-        success: function(data){
-            console.log(data);
-        }
     });
 }
 
@@ -98,7 +67,6 @@ function getRepasListFromDB(){
 
 function addToTable(){
     let index = 0;
-    let id = 0;
 
     while(index < repasList.length){
         let repas = repasList[index];
@@ -117,11 +85,6 @@ function addToTable(){
             rowStr += `<br>${repas.aliments[i][1]}`;
         }
         rowStr += `</td>`;
-        
-        rowStr += 
-            `<td>
-                <button id='editButton${repasList[index][0]}' onClick='editRepas(${repas.id});'>Editer</button>
-            </td>`;
         rowStr += `</tr>`;
 
         $("#journalTableBody").append(rowStr);
@@ -162,53 +125,6 @@ function addAlimentToRepas(id_repas, aliment, quantity){
     repasList[i].aliments.push([aliment, quantity]);
 }
 
-function editRepasList(){
-    let repas = getRepas(currentId);
-
-    repas.date = $('#inputDate').val();
-    repas.time = $('#inputTime').val();
-    repas.aliments = [];
-
-    for(let i = 1; i <= selectId; i++){
-        repas.aliments.push([
-            $(`#selectAliment${i}`).val(),
-            $(`#inputQuantity${i}`).val()
-        ]);
-    }
-
-    for(let i = 0; i < repasList.length; i++){
-        if(repasList[i].id == currentId){
-            repasList[i] = repas;
-            
-            console.log(repasList[i]);
-        }
-    }
-}
-
-function editTable(){
-    let repas = getRepas(currentId);
-
-    let rowStr = `<tr id="row${currentId}">
-            <td>${repas.date}</td>
-            <td>${repas.time}</td>`;
-
-            rowStr += `<td>${repas.aliments[0][0]}`;
-            for(let i = 1; i < repas.aliments.length; i++){
-                rowStr += `<br>${repas.aliments[i][0]}`;
-            }
-    
-            rowStr += `</td><td>${repas.aliments[0][1]}`;
-            for(let i = 1; i < repas.aliments.length; i++){
-                rowStr += `<br>${repas.aliments[i][1]}`;
-            }
-            rowStr += `</td>`;
-
-            rowStr += `<td><button id='editButton${currentId}' onClick='editRepas(${currentId});'>Editer</button></td>
-        </tr>`;
-
-    $(`#row${currentId}`).replaceWith(rowStr);
-}
-
 function addRepasToTable(){
     let repas = getRepas(currentId);
 
@@ -227,12 +143,6 @@ function addRepasToTable(){
         tr += `<br>${repas.aliments[i][1]}`;
     }
     tr += `</td>`;
-
-    tr += `<td><button id='editButton${currentId}' onClick='editRepas(${currentId});'>Editer</button></td>
-</tr>`;
-
-    tr += `<td><button id='editButton${currentId}' onClick='editRepas(${currentId});'>Editer</button></td>`;
-
     tr += "</tr>";
     $('#journalTableBody').append(tr);
 }
@@ -245,53 +155,6 @@ function getRepas(id){
         }
     }
     return null;
-}
-
-function editRepas(id){
-    editMode = true;
-    currentId = id;
-
-    console.log(id);
-    console.log(repasList);
-
-    let repas = getRepas(id);
-    $('#inputDate').val(repas.date);
-    $('#inputTime').val(repas.time);
-
-    let aliments = repas.aliments;
-    $(`#selectAliment1`).val(aliments[0][0]).trigger('change');
-    $(`#inputQuantity1`).val(aliments[0][1]);
-    selectId = aliments.length;
-
-    if(aliments.length >= 2){
-        for(let i = 2; i <= aliments.length; i++){
-            let div = 
-            `<div class='form-group row' id='divAlim${i}'>
-                <label for="aliment${i}">Aliment ${i}</label>
-                <select id="selectAliment${i}" name="aliment${i}">
-                    <option>Choisir un Aliment</option>
-                </select>
-
-                <input type="text" class="form-control" name="quantity${i}" id="inputQuantity${i}">
-                <label for="quantity${i}">(g ou mL)</label>
-            </div>`;
-
-            $('#repasForm').append(div);
-            $(`#divAlim${i}`).insertBefore('#addButton');
-            $(`#selectAliment${i}`).select2();
-
-            for(let alim = 0; alim < alimentsList.length; alim++){
-                $(`#selectAliment${i}`).append("<option>" + alimentsList[alim] + "</option>");
-            }
-
-            console.log(aliments, i-1);
-
-            $(`#selectAliment${i}`).val(aliments[i-1][0]).trigger('change');
-            $(`#inputQuantity${i}`).val(aliments[i-1][1]);
-        }
-    }
-    
-    console.log(id);
 }
 
 function clearForm(){

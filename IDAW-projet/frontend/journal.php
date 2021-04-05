@@ -20,7 +20,6 @@
                     <th scope="col" class="table-primary time">Heure</th>
                     <th scope="col" class="table-primary aliment">Aliment</th>
                     <th scope="col" class="table-primary quantity">Quantité (g ou mL)</th>
-                    <th scope="col" class="table-primary operation">Opérations</th>
                 </tr>
             </thead>
             <tbody id='journalTableBody' >

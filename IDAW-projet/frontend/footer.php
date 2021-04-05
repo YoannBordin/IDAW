@@ -5,7 +5,7 @@
                     <li class="d-inline-block ms-3"><a href="mystery.php">A propos</a></li>
                 </ul>
                 <p class="mb-0">Site web réalisé avec amour dans le cadre du projet en développement Web par Yoann BORDIN.</p>
-                <p class="mb-0">Version 0.4</p>
+                <p class="mb-0">Version 1.0</p>
             </div>
         </footer>
     </body>
