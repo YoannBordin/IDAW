@@ -2,6 +2,7 @@
             <div class="container">
                 <ul class="bd-footer-links ps-0 mb-3">
                     <li class="d-inline-block"><a href="https://github.com/YoannBordin/IDAW/tree/main/IDAW-projet">GitHub</a></li>
+                    <li class="d-inline-block ms-3"><a href="../backend/doc/RESTAPI.html">Documentation</a></li>
                     <li class="d-inline-block ms-3"><a href="mystery.php">A propos</a></li>
                 </ul>
                 <p class="mb-0">Site web réalisé avec amour dans le cadre du projet en développement Web par Yoann BORDIN.</p>
